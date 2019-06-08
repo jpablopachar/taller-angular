@@ -1,3 +1,27 @@
-<p>
-  Soy la ruta login
-</p>
+<div class="wrapper">
+  <div class="container my-5">
+    <div class="d-flex justify-content-center mb-4">
+      <img src="../../../assets/logo.jpeg" alt="logo" width="175" height="55">
+    </div>
+    <div class="row">
+      <div class="col-8 mx-auto">
+        <form #loginForm="ngForm" (ngSubmit)="iniciarSesion(loginForm)">
+          <div class="form-group">
+            <input type="email" name="email" #email="ngModel" [(ngModel)] = "usuario.email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <label class="ph-area">Email</label>
+            <span class="text-white" *ngIf="!email.valid && email.touched">!El email es obligatorio¡</span>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="usuario.password" class="form-control" required>
+            <label class="ph-area">Password</label>
+            <span class="text-white" *ngIf="!password.valid && password.touched">¡El password es obligatorio!</span>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-secondary text-primary" [disabled]="!loginForm.form.valid">{{ titulo }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
