@@ -27,11 +27,36 @@ export class LoginComponent implements OnInit {
   }
 
   iniciarSesion(form: NgForm) {
-    this.usuarioService.iniciarSesion(this.usuario).subscribe(res => console.log(res), error => console.log(<any>error));
+    this.usuarioService.iniciarSesion(this.usuario).subscribe((res) => {
+      console.log(res);
+      this.identidad = res.usuario;
+
+      if (!this.identidad || !this.identidad._id) {
+        this.estado = 'error';
+      } else {
+        localStorage.setItem('identidad', JSON.stringify(this.identidad));
+        this.obtenerToken();
+      }
+    }, error => console.log(<any>error));
   }
 
   obtenerToken() {
-    this.usuarioService.iniciarSesion(this.usuario, 'true').subscribe(res => console.log(res), error => console.log(<any>error));
+    this.usuarioService.iniciarSesion(this.usuario, 'true').subscribe((res) => {
+      this.token = res.token;
+
+      if (this.token.lenght <= 0) {
+        this.estado = 'error';
+      } else {
+        localStorage.setItem('token', this.token);
+        this.obtenerToken();
+      }
+    }, (error) => {
+      const mensajeError = <any>error;
+      console.log(mensajeError);
+      if (mensajeError != null) {
+        this.estado = 'error';
+      }
+    });
   }
 
 }
