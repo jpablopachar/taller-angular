@@ -23,4 +23,11 @@ export class RolService {
 
     return this.http.get(this.url + 'rol', {headers});
   }
+
+  guardarRol(token, rol: Rol): Observable<any> {
+    const params = JSON.stringify(rol);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+    return this.http.post(this.url + 'rol', params, {headers});
+  }
 }

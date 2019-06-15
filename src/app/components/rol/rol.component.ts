@@ -29,4 +29,8 @@ export class RolComponent implements OnInit {
     this.rolService.listarRoles(this.token).subscribe(res => this.rolService.roles = res.roles as Rol[], error => console.log(<any>error));
   }
 
+  guardarRol(form: NgForm) {
+    this.rolService.guardarRol(this.token, form.value).subscribe(res => console.log(res), error => console.log(<any>error));
+  }
+
 }

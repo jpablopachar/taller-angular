@@ -2,13 +2,14 @@
   <div class="row">
     <div class="offset-md-3 col-md-3">
       <h2 class="h1 font-weight-bold text-center py-3">Registrar rol</h2>
-      <form>
-        <input type="hidden" name="_id">
+      <form #registrarRolForm="ngForm" (ngSubmit)="guardarRol(registrarRolForm)">
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="rolService.rolSeleccionado._id">
         <div class="form-group col-md-8 pl-0">
           <label class="font-weight-bold">Nombre del rol</label>
-          <input type="text" class="form-control" name="name" required>
+          <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="rolService.rolSeleccionado.name" required>
+          <span *ngIf="!name.valid && name.touched">!El nombre del rol es obligatorio¡</span>
         </div>
-        <button type="button" class="btn btn-primary">Registrar</button>
+        <button type="button" class="btn btn-primary" [disabled]="!registrarRolForm.form.valid">Registrar</button>
       </form>
     </div>
     <div class="col-md-3">
