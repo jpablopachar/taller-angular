@@ -30,4 +30,10 @@ export class RolService {
 
     return this.http.post(this.url + 'rol', params, {headers});
   }
+
+  eliminarRol(token, idRol): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+    return this.http.delete(`${this.url}rol/${idRol}`, {headers});
+  }
 }

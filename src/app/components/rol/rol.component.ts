@@ -30,7 +30,16 @@ export class RolComponent implements OnInit {
   }
 
   guardarRol(form: NgForm) {
-    this.rolService.guardarRol(this.token, form.value).subscribe(res => console.log(res), error => console.log(<any>error));
+    this.rolService.guardarRol(this.token, form.value).subscribe((res) => {
+      this.listarRoles();
+      form.reset();
+    }, error => console.log(<any>error));
+  }
+
+  eliminarRol(idRol: string) {
+    if (confirm('¿Estás seguro de eliminar este rol?')) {
+      this.rolService.eliminarRol(this.token, idRol).subscribe(res => this.listarRoles(), error => console.log(<any>error));
+    }
   }
 
 }
