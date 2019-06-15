@@ -17,4 +17,10 @@ export class RolService {
     this.url = Global.url;
     this.rolSeleccionado = new Rol();
   }
+
+  listarRoles(token): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+    return this.http.get(this.url + 'rol', {headers});
+  }
 }
