@@ -17,6 +17,7 @@ export class RolComponent implements OnInit {
   public estado: string;
 
   constructor(private userService: UserService, private rolService: RolService) {
+    this.opcionBoton = 'Registrar';
     this.token = this.userService.obtenerToken();
   }
 
@@ -30,10 +31,23 @@ export class RolComponent implements OnInit {
   }
 
   guardarRol(form: NgForm) {
-    this.rolService.guardarRol(this.token, form.value).subscribe((res) => {
-      this.listarRoles();
-      form.reset();
-    }, error => console.log(<any>error));
+    if (form.value._id) {
+      this.rolService.actualizarRol(this.token, form.value).subscribe((res) => {
+        this.opcionBoton = 'Registrar';
+        this.listarRoles();
+        form.reset();
+      }, error => console.log(<any>error));
+    } else {
+      this.rolService.guardarRol(this.token, form.value).subscribe((res) => {
+        this.listarRoles();
+        form.reset();
+      }, error => console.log(<any>error));
+    }
+  }
+
+  editarRol(rol: Rol) {
+    this.opcionBoton = 'Editar';
+    this.rolService.rolSeleccionado = rol;
   }
 
   eliminarRol(idRol: string) {

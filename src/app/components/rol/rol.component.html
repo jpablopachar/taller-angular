@@ -9,7 +9,7 @@
           <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="rolService.rolSeleccionado.name" required>
           <span *ngIf="!name.valid && name.touched">!El nombre del rol es obligatorio¡</span>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!registrarRolForm.form.valid">Registrar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!registrarRolForm.form.valid">{{ opcionBoton }}</button>
       </form>
     </div>
     <div class="col-md-3">
@@ -25,7 +25,7 @@
           <tr *ngFor="let rol of rolService.roles">
             <td>{{ rol.name }}</td>
             <td>
-              <a class="btn btn-outline-primary mr-2"><i class="far fa-edit text-warning"></i></a>
+              <a class="btn btn-outline-primary mr-2" (click)="editarRol(rol)"><i class="far fa-edit text-warning"></i></a>
               <a class="btn btn-outline-primary" (click)="eliminarRol(rol._id)"><i class="far fa-trash-alt text-danger"></i></a>
             </td>
           </tr>
