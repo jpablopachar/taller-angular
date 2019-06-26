@@ -35,7 +35,7 @@ export class SalaService {
     const params = JSON.stringify(sala);
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
 
-    return this.http.put(`${this.url}sala/${sala._id}`, params, {headers});
+    return this.http.put(this.url + 'sala/' + sala._id, params, {headers});
   }
 
   eliminarSala(token, idSala): Observable<any> {
