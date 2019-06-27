@@ -7,16 +7,17 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { RolComponent } from './components/rol/rol.component';
 import { SalaComponent } from './components/sala/sala.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
+import { UsuarioGuard } from './services/usuario.guard';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'inicio', component: InicioComponent},
+  {path: 'inicio', component: InicioComponent, canActivate: [UsuarioGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'roles', component: RolComponent},
-  {path: 'usuarios', component: UserComponent},
-  {path: 'salas', component: SalaComponent},
-  {path: 'permisos', component: PermisoComponent},
-  {path: 'accesos', component: AccesoComponent},
+  {path: 'usuarios', component: UserComponent, canActivate: [UsuarioGuard]},
+  {path: 'salas', component: SalaComponent, canActivate: [UsuarioGuard]},
+  {path: 'permisos', component: PermisoComponent, canActivate: [UsuarioGuard]},
+  {path: 'accesos', component: AccesoComponent, canActivate: [UsuarioGuard]},
   {path: '**', component: InicioComponent}
 ];
 

@@ -12,6 +12,8 @@ import { UserComponent } from './components/user/user.component';
 import { SalaComponent } from './components/sala/sala.component';
 import { PermisoComponent } from './components/permiso/permiso.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
+import { UserService } from './services/user.service';
+import { UsuarioGuard } from './services/usuario.guard';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { AccesoComponent } from './components/acceso/acceso.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UserService, UsuarioGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
