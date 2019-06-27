@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2 class="h1 font-weight-bold text-center py-3">Listado de accesos</h2>
+      <table class="table">
+        <thead class="bg-primary">
+          <tr>
+            <th scope="col" class="text-white">Día</th>
+            <th scope="col" class="text-white">Hora</th>
+            <th scope="col" class="text-white">Usuario</th>
+            <th scope="col" class="text-white">Sala</th>
+            <th scope="col" class="text-white">Tipo de acceso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acceso of accesoService.accesos">
+            <td>{{ acceso.date }}</td>
+            <td>{{ acceso.hour }}</td>
+            <td>{{ acceso.user }}</td>
+            <td>{{ acceso.sala }}</td>
+            <td>{{ acceso.typeAccess }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

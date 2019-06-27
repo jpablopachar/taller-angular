@@ -11,6 +11,7 @@ import { RolComponent } from './components/rol/rol.component';
 import { UserComponent } from './components/user/user.component';
 import { SalaComponent } from './components/sala/sala.component';
 import { PermisoComponent } from './components/permiso/permiso.component';
+import { AccesoComponent } from './components/acceso/acceso.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PermisoComponent } from './components/permiso/permiso.component';
     RolComponent,
     UserComponent,
     SalaComponent,
-    PermisoComponent
+    PermisoComponent,
+    AccesoComponent
   ],
   imports: [
     BrowserModule,

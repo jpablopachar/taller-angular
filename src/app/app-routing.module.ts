@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { RolComponent } from './components/rol/rol.component';
 import { SalaComponent } from './components/sala/sala.component';
+import { AccesoComponent } from './components/acceso/acceso.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'usuarios', component: UserComponent},
   {path: 'salas', component: SalaComponent},
   {path: 'permisos', component: PermisoComponent},
+  {path: 'accesos', component: AccesoComponent},
   {path: '**', component: InicioComponent}
 ];
 
